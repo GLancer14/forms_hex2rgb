@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+}
+
+.form_text-input {
+  width: 150px;
+  height: 40px;
+  padding: 0px;
+
+  text-align: center;
+
+  border: none;
+  color: black;
+  background-color: white;
+}
+
+.form_converted-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  margin-top: 15px;
+
+  color: white;
+  background-color: black;
+}
