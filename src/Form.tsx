@@ -2,31 +2,30 @@ import { useState, type ChangeEvent } from "react";
 import hexRgb from "hex-rgb";
 
 export default function Form() {
+  const [inputValue, setInputValue] = useState("");
   const [color, setColor] = useState("");
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setColor(e.target.value);
-  }
-
-  function displayColorCode(inputString: string) {
-    if (color.length === 7) {
-      if (/\#[0-9a-f]{6}/.test(color)) {
-        return hexRgb(inputString, { format: "css" });
+    const targetValue = e.target.value;
+    setInputValue(targetValue);
+    if (targetValue.length === 7) {
+      if (/\#[0-9a-f]{6}/.test(targetValue)) {
+        setColor(hexRgb(targetValue, { format: "css" }));
       } else {
-        return "Ошибка!";
+        setColor("Ошибка!");
       }
     }
   }
 
   return (
-    <form className="form" style={{backgroundColor: displayColorCode(color)}}>
+    <form className="form" style={{backgroundColor: color}}>
       <input
         className="form_text-input"
         type="text"
-        value={color}
+        value={inputValue}
         onChange={handleChange}
       />
-      <div className="form_converted-value">{displayColorCode(color)}</div>
+      <div className="form_converted-value">{color}</div>
     </form>
   );
 }
